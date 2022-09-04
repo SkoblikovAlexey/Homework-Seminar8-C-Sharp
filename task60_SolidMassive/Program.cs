@@ -7,6 +7,23 @@
 // 26(1,0,1) 55(1,1,1)
 
 
+bool FindElement(int[,,] array, int elem)
+{
+    bool check = true;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+            {
+                if (elem == array[i, j, k]) check = true;
+                else check = false;
+            }
+        }
+    }
+    return check;
+}
+
 
 int[,,] CreateArray(int m, int n, int l)
 {
@@ -17,7 +34,9 @@ int[,,] CreateArray(int m, int n, int l)
         {
             for (int k = 0; k < l; k++)
             {
-                array[i, j, k] = new Random().Next(10, 100);
+                int element = new Random().Next(1, 9);
+                if (FindElement(array, element)) continue;
+                array [i, j, k] = element;
             }
         }
     }
